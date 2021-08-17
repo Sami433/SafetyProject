@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 public class FireStationController {
+
     private final FireStationService fireStationService;
     public FireStationController(FireStationService fireStationService) {
         this.fireStationService = fireStationService;

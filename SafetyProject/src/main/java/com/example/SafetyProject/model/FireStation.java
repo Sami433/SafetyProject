@@ -7,8 +7,7 @@ public class FireStation {
     String stationNumber;
 
     public FireStation(){};
-    public FireStation(@JsonProperty("address")String address,
-                       @JsonProperty("station")String stationNumber) {
+    public FireStation(@JsonProperty("address")String address,  @JsonProperty("station")String stationNumber) {
         this.address = address;
         this.stationNumber = stationNumber;
     }
@@ -29,7 +28,5 @@ public class FireStation {
         this.stationNumber = stationNumber;
     }
 
-    public Object getStation() {
-        return null;
-    }
+
 }

@@ -2,9 +2,10 @@ package com.example.SafetyProject.repository;
 
 import com.example.SafetyProject.model.Person;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Component
+@Repository
 
 public class PersonRepository {
 
@@ -14,7 +15,7 @@ public class PersonRepository {
 
     public List< Person > findAllPersons() {
 
-        return dataHandler.getData().getPersons();
+        return this.dataHandler.getData().getPersons();
     }
 
 }

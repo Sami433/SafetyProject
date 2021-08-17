@@ -5,15 +5,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
+
 public class FireStationRepository {
 
-    public FireStationRepository(FireStation fireStation, DataHandler dataHandler) {
-        this.fireStation = fireStation;
+
+    private final DataHandler dataHandler;
+
+
+    public FireStationRepository(DataHandler dataHandler) {
+
         this.dataHandler = dataHandler;
     }
 
-    public FireStation fireStation;
-    public DataHandler dataHandler;
+
+
 
 
     public List<FireStation> allFireStation() {

@@ -23,26 +23,8 @@ public class DataHandler {
         this.data = JsonIterator.deserialize(data, Data.class);
     }
 
-    public Data getData (){
+    public Data getData() {
         return data;
     }
 
-/*
-    CommandLineRunner runner (PersonService personService){
-       return args -> {
-            ObjectMapper mapper = new ObjectMapper();
-            TypeReference<List<Person>> typeReference = new TypeReference<List<Person>>(){};
-            TypeReference<List<FireStation>> typeReference2 = new TypeReference<List<FireStation>>(){};
-            TypeReference<List<MedicalRecord>> typeReference3 = new TypeReference<List<MedicalRecord>>(){};
-            InputStream inputStream = TypeReference.class.getResourceAsStream("/json/data.json");
-            try {
-                List<Person> persons = mapper.readValue(inputStream, typeReference);
-                List<FireStation> fireStations = mapper.readValue(inputStream, typeReference2);
-                List<MedicalRecord> medicalRecords = mapper.readValue(inputStream, typeReference3);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        };
-   }*/
 }

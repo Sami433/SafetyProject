@@ -1,0 +1,4 @@
+package com.example.SafetyProject;
+
+public @interface EnableJpaRepositories {
+}
