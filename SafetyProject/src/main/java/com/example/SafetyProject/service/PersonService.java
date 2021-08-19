@@ -37,36 +37,6 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> findPhoneNumbersByStationNumber(int number) {
-
-        List<String> result = new ArrayList<>();
-
-        List<FireStation> fireStations = fireStationRepository.findAllFireStationsAddressByNumber(number);
-
-
-        List<Person> persons = personRepository.findAllPersons();
-
-
-        for (Person person : persons) {
-            if (personsContainsFirestationAddress(fireStations, person)) {
-                result.add(person.getPhone());
-            }
-        }
-
-        return result;
-
-    }
-
-
-    private boolean personsContainsFirestationAddress(List<FireStation> fireStations, Person person) {
-        for (FireStation fireStation : fireStations) {
-            if (fireStation.getAddress().equals(person.getAddress())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 
 
