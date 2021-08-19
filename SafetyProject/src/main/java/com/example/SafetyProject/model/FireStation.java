@@ -3,14 +3,17 @@ package com.example.SafetyProject.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FireStation {
-    String address;
-    int stationNumber;
+    private String address;
+    private String station;
 
-    public FireStation(){};
-    public FireStation(@JsonProperty("address")String address,
-                       @JsonProperty("station") int stationNumber) {
+
+
+    public FireStation() {
+    }
+
+    public FireStation(String address, String station) {
         this.address = address;
-        this.stationNumber = stationNumber;
+        this.station = station;
     }
 
     public String getAddress() {
@@ -21,10 +24,13 @@ public class FireStation {
         this.address = address;
     }
 
-    public int getStationNumber() {
-        return stationNumber;
+    public String getStation() {
+        return station;
     }
 
-    public void setStationNumber(int stationNumber) {
-        this.stationNumber = stationNumber;
-    }}
+    public void setStation(String station) {
+        this.station = station;
+    }
+
+
+}

@@ -1,27 +1,21 @@
 package com.example.SafetyProject.controller;
 
-import com.example.SafetyProject.service.FireStationService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.SafetyProject.service.*;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class FireStationController {
+    private  final FireStationService fireStationService;
 
-    private final FireStationService fireStationService;
     public FireStationController(FireStationService fireStationService) {
         this.fireStationService = fireStationService;
     }
-
     @RequestMapping(value = "phoneAlert", method = RequestMethod.GET)
-    public List<String> phoneNumberList(@RequestParam(name = "fireStation") int number) {
+    public List<String> phoneNumberList(@RequestParam(name = "firestation") String station) {
 
-        return this.fireStationService.findPhoneNumbersByStationNumber(number);
-
-
+        return this.fireStationService.findPhoneNumbersByStationNumber(station);
 
     }
 }

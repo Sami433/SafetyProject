@@ -1,24 +1,27 @@
 package com.example.SafetyProject.repository;
+
 import com.example.SafetyProject.model.FireStation;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.*;
+
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
-@Repository
 
+@Component
 public class FireStationRepository {
-
 
     private final DataHandler dataHandler;
 
-
     public FireStationRepository(DataHandler dataHandler) {
-
         this.dataHandler = dataHandler;
     }
 
-    public List<FireStation> findAllFireStationsAddressByNumber(Integer number) {
 
-        return dataHandler.getData().getFirestations().stream().filter(p -> p.getStationNumber().equals(number.toString())).collect(Collectors.toList());
-    }
-}
+
+    public List<FireStation> findAllFireStationsAddressByNumber(String station) {
+
+        final List<FireStation> collect = dataHandler.getData().getFirestations().stream()
+                .filter(p -> p.getStation().equals(station))
+                .collect(Collectors.toList());
+        return collect;
+    }}
