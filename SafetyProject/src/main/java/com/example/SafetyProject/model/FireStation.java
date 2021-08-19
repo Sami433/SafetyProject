@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FireStation {
     String address;
-    String stationNumber;
+    int stationNumber;
 
     public FireStation(){};
-    public FireStation(@JsonProperty("address")String address,  @JsonProperty("station")String stationNumber) {
+    public FireStation(@JsonProperty("address")String address,
+                       @JsonProperty("station") int stationNumber) {
         this.address = address;
         this.stationNumber = stationNumber;
     }
@@ -20,13 +21,10 @@ public class FireStation {
         this.address = address;
     }
 
-    public String getStationNumber() {
+    public int getStationNumber() {
         return stationNumber;
     }
 
-    public void setStationNumber(String stationNumber) {
+    public void setStationNumber(int stationNumber) {
         this.stationNumber = stationNumber;
-    }
-
-
-}
+    }}

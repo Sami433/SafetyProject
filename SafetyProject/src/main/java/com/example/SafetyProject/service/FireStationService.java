@@ -14,11 +14,11 @@ public class FireStationService {
     private DataHandler dataHandler;
 
 
-    public List<String> findPhoneNumbersByStationNumber(int stationNumber) {
+    public List<String> findPhoneNumbersByStationNumber(int number) {
 
         List<String> result = new ArrayList<>();
 
-        List<FireStation> fireStations = fireStationRepository.findAllFireStationsAddressByNumber(stationNumber);
+        List<FireStation> fireStations = fireStationRepository.findAllFireStationsAddressByNumber(number);
 
         List<Person> persons = personRepository.findAllPersons();
 
