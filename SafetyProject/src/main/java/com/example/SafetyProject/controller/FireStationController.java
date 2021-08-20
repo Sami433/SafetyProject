@@ -13,7 +13,7 @@ public class FireStationController {
         this.fireStationService = fireStationService;
     }
     @RequestMapping(value = "phoneAlert", method = RequestMethod.GET)
-    public List<String> phoneNumberList(@RequestParam(name = "firestation") String station) {
+    public List<String> phoneNumberList(@RequestParam(name = "fireStation") String station) {
 
         return this.fireStationService.findPhoneNumbersByStationNumber(station);
 
