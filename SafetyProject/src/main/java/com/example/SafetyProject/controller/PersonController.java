@@ -1,6 +1,7 @@
 package com.example.SafetyProject.controller;
 
 import com.example.SafetyProject.service.PersonService;
+import com.example.SafetyProject.service.dto.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,12 @@ public class PersonController {
 
     }
 
+    @RequestMapping(value = "childAlert", method = RequestMethod.GET)
+    public List<ChildAlertDto> childsUnder18ByAddress(@RequestParam(name = "address") String address) {
+
+        return this.personService.findAllchildsUnder18ByAddress(address);
+
+    }
 
 
 }

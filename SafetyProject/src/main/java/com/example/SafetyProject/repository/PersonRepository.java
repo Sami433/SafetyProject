@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.*;
+
 @Repository
 
 public class PersonRepository {
@@ -18,6 +20,10 @@ public class PersonRepository {
         return this.dataHandler.getData().getPersons();
     }
 
+    public List<Person> findAllpersonByAddress(String address){
+
+        return dataHandler.getData().getPersons().stream().filter(p->p.getAddress().equals(address)).collect(Collectors.toList());
+    }
 
 
 }
