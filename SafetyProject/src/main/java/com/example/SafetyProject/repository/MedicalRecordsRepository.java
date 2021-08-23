@@ -19,7 +19,6 @@ public class MedicalRecordsRepository {
     }
 
 
-
     private boolean isUnder18(String birthdate) {
 
         Date date = null;
@@ -39,17 +38,4 @@ public class MedicalRecordsRepository {
         return dataHandler.getData().getMedicalrecords().stream().filter(m -> isUnder18(m.getBirthdate())).collect(Collectors.toList());
 
     }
-    public MedicalRecord findMedicalWithFirstNameAndLastName(String firstName, String lastName) {
-        return dataHandler.getData().getMedicalrecords().stream()
-                .filter(p -> p.getFirstName().equals(firstName))
-                .filter(p -> p.getLastName().equals(lastName))
-                .findFirst()
-                .orElseGet(() -> new MedicalRecord());
-
-    }
-    public List <MedicalRecord> findAllMedicalRecords() {
-        return dataHandler.getData().getMedicalrecords();
-
-    }
-
 }
