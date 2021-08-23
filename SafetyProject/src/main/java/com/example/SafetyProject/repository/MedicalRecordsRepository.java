@@ -20,11 +20,11 @@ public class MedicalRecordsRepository {
 
 
 
-    private boolean isUnder18(String birthDate) {
+    private boolean isUnder18(String birthdate) {
 
         Date date = null;
         try {
-            date = new SimpleDateFormat("DD/MM/YYYY").parse(birthDate);
+            date = new SimpleDateFormat("DD/MM/YYYY").parse(birthdate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class MedicalRecordsRepository {
 
     public List<MedicalRecord> findAllMedicalRecordsUnder18() {
 
-        return dataHandler.getData().getMedicalrecords().stream().filter(m -> isUnder18(m.getBirthDate())).collect(Collectors.toList());
+        return dataHandler.getData().getMedicalrecords().stream().filter(m -> isUnder18(m.getBirthdate())).collect(Collectors.toList());
 
     }
     public MedicalRecord findMedicalWithFirstNameAndLastName(String firstName, String lastName) {

@@ -21,7 +21,7 @@ public class FireStationService {
     }
 
 
-    public List<String> findPhoneNumbersByStationNumber(String station) {
+    public List<String> findPhoneNumbersByStationNumber(int station) {
         List<String> result = new ArrayList<>();
         List<FireStation> fireStations = fireStationRepository.findAllFireStationsAddressByNumber(station);
         List<Person> persons = personRepository.findAllPersons();

@@ -49,7 +49,7 @@ public class PersonService {
                 ChildAlertDto dto = new ChildAlertDto();
                 dto.setFirstName(person.getFirstName());
                 dto.setLastName(person.getLastName());
-                dto.setAge(String.valueOf(computeAge(medicalRecord.getBirthDate())));
+                dto.setAge(String.valueOf(computeAge(medicalRecord.getBirthdate())));
                 dto.setHouseholds(persons.stream().filter(p -> !p.getFirstName().equals(person.getFirstName())).collect(Collectors.toList()));
                 result.add(dto);
             }

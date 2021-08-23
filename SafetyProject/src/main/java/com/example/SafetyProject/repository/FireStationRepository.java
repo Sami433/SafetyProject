@@ -3,9 +3,8 @@ package com.example.SafetyProject.repository;
 import com.example.SafetyProject.model.FireStation;
 import org.springframework.stereotype.*;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class FireStationRepository {
@@ -17,11 +16,10 @@ public class FireStationRepository {
     }
 
 
-
-    public List<FireStation> findAllFireStationsAddressByNumber(String station) {
+    public List<FireStation> findAllFireStationsAddressByNumber(Integer station) {
 
         final List<FireStation> collect = dataHandler.getData().getFirestations().stream()
-                .filter(p -> p.getStation().equals(station))
+                .filter(p -> p.getStation().equals(station.toString()))
                 .collect(Collectors.toList());
         return collect;
     }}

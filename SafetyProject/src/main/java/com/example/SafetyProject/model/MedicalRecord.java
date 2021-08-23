@@ -4,16 +4,14 @@ package com.example.SafetyProject.model;
 public class MedicalRecord {
     private String firstName;
     private String lastName;
-    private String birthDate;
-    private String [] medications;
-    private String [] allergies;
+    private String birthdate;
+    private String[] medications;
+    private String[] allergies;
 
-    public MedicalRecord(){};
-
-    public MedicalRecord (String firstName, String lastName, String birthDate, String[] medications, String[] allergies) {
+    public MedicalRecord() {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.birthdate = birthdate;
         this.medications = medications;
         this.allergies = allergies;
     }
@@ -34,12 +32,12 @@ public class MedicalRecord {
         this.lastName = lastName;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String[] getMedications() {
@@ -57,4 +55,5 @@ public class MedicalRecord {
     public void setAllergies(String[] allergies) {
         this.allergies = allergies;
     }
+
 }
