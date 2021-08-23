@@ -61,15 +61,15 @@ public class PersonService {
 
 
     private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
-    for (MedicalRecord medicalRecord : medicalRecords) {
+        for (MedicalRecord medicalRecord : medicalRecords) {
 
-        if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
-            return medicalRecord;
+            if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
+                return medicalRecord;
+            }
         }
-    }
-    return null;
+        return null;
 
-}
+    }
 
     private int computeAge(String birthdateOfPerson) {
         Date date = null;

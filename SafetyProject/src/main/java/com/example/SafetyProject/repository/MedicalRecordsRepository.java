@@ -30,7 +30,6 @@ public class MedicalRecordsRepository {
         }
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 18);
-        // a tester / 365.25 System.out.println(LocalDate.parse(birthdate).datesUntil(LocalDate.now()).count());
         return !calendar.getTime().after(date);
 
     }

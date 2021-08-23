@@ -28,14 +28,4 @@ public class PersonRepository {
         return dataHandler.getData().getPersons().stream().filter(p -> p.getAddress().equals(address)).collect(Collectors.toList());
     }
 
-    public Person findpersonByfirstNameAndLastName(String firstName, String lastName) {
-
-
-        return dataHandler.getData().getPersons().stream()
-                .filter(p -> p.getFirstName().equals(firstName))
-                .filter(p -> p.getLastName().equals(lastName))
-                .findFirst()
-                .orElseGet(() -> new Person());
-    }
-
 }
