@@ -10,7 +10,7 @@ public class MedicalRecord {
 
     public MedicalRecord(){};
 
-    public MedicalRecord(String firstName, String lastName, String birthDate, String[] medications, String[] allergies) {
+    public MedicalRecord (String firstName, String lastName, String birthDate, String[] medications, String[] allergies) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;

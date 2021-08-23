@@ -1,11 +1,13 @@
 package com.example.SafetyProject.repository;
 
 import com.example.SafetyProject.model.*;
+import org.springframework.stereotype.*;
 
 import java.text.*;
 import java.util.*;
 import java.util.stream.*;
 
+@Component
 public class MedicalRecordsRepository {
 
 
@@ -16,16 +18,13 @@ public class MedicalRecordsRepository {
         this.dataHandler = dataHandler;
     }
 
-    public List <MedicalRecord> findAllMedicalRecords() {
-        return dataHandler.getData().getMedicalrecords();
 
-    }
 
-    private boolean isUnder18(String birthdate) {
+    private boolean isUnder18(String birthDate) {
 
         Date date = null;
         try {
-            date = new SimpleDateFormat("DD/MM/YYYY").parse(birthdate);
+            date = new SimpleDateFormat("DD/MM/YYYY").parse(birthDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -41,7 +40,17 @@ public class MedicalRecordsRepository {
         return dataHandler.getData().getMedicalrecords().stream().filter(m -> isUnder18(m.getBirthDate())).collect(Collectors.toList());
 
     }
+    public MedicalRecord findMedicalWithFirstNameAndLastName(String firstName, String lastName) {
+        return dataHandler.getData().getMedicalrecords().stream()
+                .filter(p -> p.getFirstName().equals(firstName))
+                .filter(p -> p.getLastName().equals(lastName))
+                .findFirst()
+                .orElseGet(() -> new MedicalRecord());
 
+    }
+    public List <MedicalRecord> findAllMedicalRecords() {
+        return dataHandler.getData().getMedicalrecords();
 
+    }
 
 }

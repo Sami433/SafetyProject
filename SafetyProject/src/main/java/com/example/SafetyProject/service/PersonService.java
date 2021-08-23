@@ -1,12 +1,13 @@
 package com.example.SafetyProject.service;
 
+
 import com.example.SafetyProject.model.*;
 import com.example.SafetyProject.repository.*;
 import com.example.SafetyProject.service.dto.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.*;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -14,13 +15,11 @@ import java.util.stream.Collectors;
 public class PersonService {
 
     private final PersonRepository personRepository;
-    private final DataHandler dataHandler;
     private final FireStationRepository fireStationRepository;
     private final MedicalRecordsRepository medicalRecordsRepository;
 
-    public PersonService(PersonRepository personRepository, DataHandler dataHandler, FireStationRepository fireStationRepository, MedicalRecordsRepository medicalRecordsRepository) {
+    public PersonService(PersonRepository personRepository, FireStationRepository fireStationRepository, MedicalRecordsRepository medicalRecordsRepository) {
         this.personRepository = personRepository;
-        this.dataHandler = dataHandler;
         this.fireStationRepository = fireStationRepository;
         this.medicalRecordsRepository = medicalRecordsRepository;
     }
@@ -37,16 +36,13 @@ public class PersonService {
 
     public List<ChildAlertDto> findAllchildsUnder18ByAddress(String address) {
 
+
         List<ChildAlertDto> result = new ArrayList<>();
-// récuperer la liste des peronnes habitants à cette adresse
 
         List<Person> persons = personRepository.findAllpersonByAddress(address);
-// recuperer la liste des medical records de - de 18 ans
 
         List<MedicalRecord> medicalRecords = medicalRecordsRepository.findAllMedicalRecordsUnder18();
 
-// pour chaque élément de personne rechercher dans la liste des - 18 ans
-        // je crée une troisieme liste et je fait rentrer les noms qui correspondent
         for (Person person : persons) {
             MedicalRecord medicalRecord = medicalRecordsContainsPerson(medicalRecords, person);
             if (medicalRecord != null) {
@@ -62,7 +58,9 @@ public class PersonService {
 
         return result;
     }
-private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
+
+
+    private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
     for (MedicalRecord medicalRecord : medicalRecords) {
 
         if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
@@ -73,7 +71,35 @@ private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medical
 
 }
 
-
+    private int computeAge(String birthdateOfPerson) {
+        Date date = null;
+        Calendar now = Calendar.getInstance();
+        Calendar birthDate = Calendar.getInstance();
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdateOfPerson);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        birthDate.setTime(date);
+        if (birthDate.after(now)) {
+            throw new IllegalArgumentException("Can't be born in the future");
+        }
+        int year1 = now.get(Calendar.YEAR);
+        int year2 = birthDate.get(Calendar.YEAR);
+        int age = year1 - year2;
+        int month1 = now.get(Calendar.MONTH);
+        int month2 = birthDate.get(Calendar.MONTH);
+        if (month2 > month1) {
+            age--;
+        } else if (month1 == month2) {
+            int day1 = now.get(Calendar.DAY_OF_MONTH);
+            int day2 = birthDate.get(Calendar.DAY_OF_MONTH);
+            if (day2 > day1) {
+                age--;
+            }
+        }
+        return age;
+    }
 
 
 }

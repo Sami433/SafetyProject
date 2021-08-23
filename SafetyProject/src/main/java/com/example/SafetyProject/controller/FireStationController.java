@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+
 @RestController
 public class FireStationController {
     private  final FireStationService fireStationService;
@@ -13,7 +14,7 @@ public class FireStationController {
         this.fireStationService = fireStationService;
     }
     @RequestMapping(value = "phoneAlert", method = RequestMethod.GET)
-    public List<String> phoneNumberList(@RequestParam(name = "fireStation") String station) {
+    public List <String> phoneNumberList(@RequestParam(name = "fireStation") String station) {
 
         return this.fireStationService.findPhoneNumbersByStationNumber(station);
 
