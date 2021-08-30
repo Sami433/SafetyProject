@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SafetyProject/SafetyProject.iml" filepath="$PROJECT_DIR$/SafetyProject/SafetyProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SafetyProject/SafetynetAlerts.iml" filepath="$PROJECT_DIR$/SafetyProject/SafetynetAlerts.iml" />
     </modules>
   </component>
 </project>
