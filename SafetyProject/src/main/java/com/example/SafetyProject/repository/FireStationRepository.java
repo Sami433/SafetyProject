@@ -22,4 +22,8 @@ public class FireStationRepository {
                 .filter(p -> p.getStation().equals(station.toString()))
                 .collect(Collectors.toList());
         return collect;
-    }}
+    }
+
+
+
+}

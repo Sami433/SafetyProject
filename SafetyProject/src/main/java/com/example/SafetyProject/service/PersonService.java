@@ -61,18 +61,6 @@ public class PersonService extends CalculatorAge {
     }
 
 
-    private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
-        for (MedicalRecord medicalRecord : medicalRecords) {
-
-            if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
-                return medicalRecord;
-            }
-        }
-        return null;
-
-    }
-
-
     public List<PersonInfoDto> listPersonInfos(String firstName, String lastName) {
         List<Person> persons = personRepository.findAllpersonByName(firstName, lastName);
         List<PersonInfoDto> result = new ArrayList<>();
@@ -84,8 +72,6 @@ public class PersonService extends CalculatorAge {
                 PersonInfoDto dto = new PersonInfoDto();
                 dto.setLastName(person.getLastName());
                 dto.setFirstName(person.getFirstName());
-                dto.setEmail(person.getEmail());
-                dto.setAddress(person.getAddress());
                 dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
                 dto.setMedications(medicalRecord.getMedications());
                 dto.setAllergies(medicalRecord.getAllergies());
@@ -95,5 +81,17 @@ public class PersonService extends CalculatorAge {
         return result;
     }
 
+    private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
+        for (MedicalRecord medicalRecord : medicalRecords) {
+
+            if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
+                return medicalRecord;
+            }
+        }
+        return null;
+
+    }
 
 }
+
+

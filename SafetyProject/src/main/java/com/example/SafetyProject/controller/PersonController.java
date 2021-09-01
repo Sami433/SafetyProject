@@ -23,7 +23,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "childAlert", method = RequestMethod.GET)
-    public List<ChildAlertDto>findAllchildsUnder18ByAddress(@RequestParam(name = "address") String address) {
+    public List<ChildAlertDto> findAllchildsUnder18ByAddress(@RequestParam(name = "address") String address) {
 
         return this.personService.findAllchildsUnder18ByAddress(address);
 
@@ -35,4 +35,6 @@ public class PersonController {
         return this.personService.listPersonInfos(firstName, lastName);
 
     }
+
+
 }

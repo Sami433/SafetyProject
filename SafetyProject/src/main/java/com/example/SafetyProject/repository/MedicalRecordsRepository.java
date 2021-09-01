@@ -39,8 +39,6 @@ public class MedicalRecordsRepository {
 
     }
     public List<MedicalRecord> findAllMedicalRecords() {
-
         return this.dataHandler.getData().getMedicalrecords();
     }
-
 }

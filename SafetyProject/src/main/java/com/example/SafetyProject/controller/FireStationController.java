@@ -1,6 +1,7 @@
 package com.example.SafetyProject.controller;
 
 import com.example.SafetyProject.service.FireStationService;
+import com.example.SafetyProject.service.dto.FireStationDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,5 +22,11 @@ public class FireStationController {
         return this.fireStationService.findPhoneNumbersByStationNumber(station);
 
     }
+    @RequestMapping(value = "firestation", method = RequestMethod.GET)
+    FireStationDto findAllPersonsByStationNumber(@RequestParam(name = "stationNumber") int number) {
+        return this.fireStationService.findAllPersonsByStationNumber(number);
+    }
+
 }
+
 
