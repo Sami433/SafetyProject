@@ -38,4 +38,9 @@ public class MedicalRecordsRepository {
         return dataHandler.getData().getMedicalrecords().stream().filter(m -> isUnder18(m.getBirthdate())).collect(Collectors.toList());
 
     }
+    public List<MedicalRecord> findAllMedicalRecords() {
+
+        return this.dataHandler.getData().getMedicalrecords();
+    }
+
 }

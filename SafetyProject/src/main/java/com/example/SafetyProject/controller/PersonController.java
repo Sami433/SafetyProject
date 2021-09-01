@@ -29,6 +29,10 @@ public class PersonController {
 
     }
 
+    @RequestMapping(value = "personInfo", method = RequestMethod.GET)
+    public List<PersonInfoDto> listPersonInfos(@RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName) {
 
+        return this.personService.listPersonInfos(firstName, lastName);
+
+    }
 }
-

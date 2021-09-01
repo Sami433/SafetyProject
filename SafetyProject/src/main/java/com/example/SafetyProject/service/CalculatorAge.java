@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ComputeAge {
+public class CalculatorAge {
 
-    public int computeAge(String birthdateOfPerson) {
+    public int calculatorAge(String birthdateOfPerson) {
         Date date = null;
         Calendar now = Calendar.getInstance();
         Calendar birthDate = Calendar.getInstance();
@@ -36,4 +36,7 @@ public class ComputeAge {
         }
         return age;
     }
+
+
+
 }

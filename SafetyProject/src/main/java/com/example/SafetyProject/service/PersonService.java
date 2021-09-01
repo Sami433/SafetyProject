@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class PersonService extends ComputeAge {
+
+public class PersonService extends CalculatorAge {
 
     private final PersonRepository personRepository;
     private final FireStationRepository fireStationRepository;
@@ -49,7 +50,7 @@ public class PersonService extends ComputeAge {
                 ChildAlertDto dto = new ChildAlertDto();
                 dto.setFirstName(person.getFirstName());
                 dto.setLastName(person.getLastName());
-                dto.setAge(String.valueOf(computeAge(medicalRecord.getBirthdate())));
+                dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
                 dto.setHouseholds(persons.stream().filter(p -> !p.getFirstName().equals(person.getFirstName())).collect(Collectors.toList()));
                 result.add(dto);
             }
@@ -71,6 +72,28 @@ public class PersonService extends ComputeAge {
 
     }
 
+
+    public List<PersonInfoDto> listPersonInfos(String firstName, String lastName) {
+        List<Person> persons = personRepository.findAllpersonByName(firstName, lastName);
+        List<PersonInfoDto> result = new ArrayList<>();
+        List<MedicalRecord> medicalRecords = medicalRecordsRepository.findAllMedicalRecords();
+
+        for (Person person : persons) {
+            MedicalRecord medicalRecord = medicalRecordsContainsPerson(medicalRecords, person);
+            if (medicalRecord != null) {
+                PersonInfoDto dto = new PersonInfoDto();
+                dto.setLastName(person.getLastName());
+                dto.setFirstName(person.getFirstName());
+                dto.setEmail(person.getEmail());
+                dto.setAddress(person.getAddress());
+                dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
+                dto.setMedications(medicalRecord.getMedications());
+                dto.setAllergies(medicalRecord.getAllergies());
+                result.add(dto);
+            }
+        }
+        return result;
+    }
 
 
 }
