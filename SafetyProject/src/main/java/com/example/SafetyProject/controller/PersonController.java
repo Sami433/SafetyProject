@@ -35,6 +35,11 @@ public class PersonController {
         return this.personService.listPersonInfos(firstName, lastName);
 
     }
+    @RequestMapping(value = "flood/stations", method = RequestMethod.GET)
+    public List<FloodDto> flood (@RequestParam(name = "stations") List<Integer> stationsNumbers) {
 
+        return this.personService.flood(stationsNumbers);
+
+    }
 
 }
