@@ -71,6 +71,8 @@ public class PersonService extends CalculatorAge {
                 PersonInfoDto dto = new PersonInfoDto();
                 dto.setLastName(person.getLastName());
                 dto.setFirstName(person.getFirstName());
+                dto.setAddress(person.getAddress());
+                dto.setEmail(person.getEmail());
                 dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
                 dto.setMedications(medicalRecord.getMedications());
                 dto.setAllergies(medicalRecord.getAllergies());
