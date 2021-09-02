@@ -6,7 +6,6 @@ import com.example.SafetyProject.repository.*;
 import com.example.SafetyProject.service.dto.*;
 import org.springframework.stereotype.Service;
 
-import java.text.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -81,15 +80,49 @@ public class PersonService extends CalculatorAge {
         return result;
     }
 
-    private MedicalRecord medicalRecordsContainsPerson (List <MedicalRecord> medicalRecords, Person person) {
+    private MedicalRecord medicalRecordsContainsPerson(List<MedicalRecord> medicalRecords, Person person) {
         for (MedicalRecord medicalRecord : medicalRecords) {
 
-            if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
+            if (medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())) {
                 return medicalRecord;
             }
         }
         return null;
 
+    }
+
+    public List<FloodDto> flood(List<Integer> stationsNumbers) {
+
+        return stationsNumbers.stream().flatMap(n -> fireStationRepository.findAllFireStationsAddressByNumber(n)
+                        .stream()).map(s -> FloodDto.builder()
+                        .address(s.getAddress())
+                        .people(getPeopleByAddress(s.getAddress())).build())
+                .collect(Collectors.toList());
+    }
+
+    private List<PersonFloodDto> getPeopleByAddress(String address) {
+        List<Person> persons = personRepository.findAllpersonByAddress(address);
+        List<MedicalRecord> medicalRecords = medicalRecordsRepository.findAllMedicalRecords();
+        List<PersonFloodDto> result = new ArrayList<>();
+
+
+        for (Person person : persons) {
+            MedicalRecord medicalRecord = medicalRecordsContainsPerson(medicalRecords, person);
+            FireStation fireStation = fireStationRepository.findFireStationNumberByAddress(address);
+
+            if (medicalRecord != null) {
+                PersonFloodDto dto = new PersonFloodDto();
+                dto.setLastName(person.getLastName());
+                dto.setFirstName(person.getFirstName());
+                dto.setPhone(person.getPhone());
+                dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
+                dto.setMedications(medicalRecord.getMedications());
+                dto.setAllergies(medicalRecord.getAllergies());
+                result.add(dto);
+            }
+
+        }
+        return result;
     }
 
 }

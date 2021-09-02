@@ -9,7 +9,9 @@ public class PersonFloodDto {
     String[] medications;
     String[] allergies;
 
+    public PersonFloodDto() {
 
+    }
 
 
     public String getLastName() {

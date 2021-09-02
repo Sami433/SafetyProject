@@ -24,6 +24,12 @@ public class FireStationRepository {
         return collect;
     }
 
+    public FireStation findFireStationNumberByAddress(String address) {
+        return dataHandler.getData().getFirestations().stream()
+                .filter(p -> p.getAddress().equals(address))
+                .findFirst()
+                .orElseGet(() -> new FireStation());
+    }
 
 
 }
