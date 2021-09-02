@@ -34,4 +34,21 @@ public class PersonRepository {
                 .filter(person -> person.getLastName().equals(lastName))
                 .collect(Collectors.toList());
     }
+
+    public void savePerson(Person person) {
+        dataHandler.getData().getPersons().add(person);
+        dataHandler.save();
+    }
+
+    public void deletePerson(String firstName, String lastName) {
+        List<Person> persons = dataHandler.getData().getPersons();
+        List<Person> toRemove = dataHandler.getData().getPersons().stream()
+                .filter(person -> person.getFirstName().equals(firstName))
+                .filter(person -> person.getLastName().equals(lastName))
+                .collect(Collectors.toList());
+        persons.removeAll(toRemove);
+        dataHandler.getData().setPersons(persons);
+        dataHandler.save();
+    }
+
 }

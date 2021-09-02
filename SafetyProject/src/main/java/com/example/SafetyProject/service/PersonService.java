@@ -154,5 +154,14 @@ public class PersonService extends CalculatorAge {
             return result;
 
         }
+
+
+    public void addPerson(Person person) {
+
+        personRepository.savePerson(person);
+    }
+    public void deletePerson(String firstName, String lastName) {
+        personRepository.deletePerson(firstName, lastName);
+    }
     }
 

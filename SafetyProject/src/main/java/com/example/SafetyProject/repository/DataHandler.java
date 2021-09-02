@@ -2,11 +2,14 @@ package com.example.SafetyProject.repository;
 
 import com.example.SafetyProject.model.Data;
 import com.jsoniter.JsonIterator;
+import com.jsoniter.output.JsonStream;
 import org.apache.commons.io.FileUtils;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -26,5 +29,19 @@ public class DataHandler {
     public Data getData() {
         return data;
     }
+
+    public void save() {
+        String json = JsonStream.serialize(data);
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter("classpath:data.json"));
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

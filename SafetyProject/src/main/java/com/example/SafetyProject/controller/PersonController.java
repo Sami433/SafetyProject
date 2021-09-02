@@ -1,5 +1,6 @@
 package com.example.SafetyProject.controller;
 
+import com.example.SafetyProject.model.Person;
 import com.example.SafetyProject.service.PersonService;
 import com.example.SafetyProject.service.dto.*;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,15 @@ public class PersonController {
     public List<FireDto> findAllPersonsWithMedicalRecords(@RequestParam(name = "address") String address) {
         return this.personService.findAllPersonsWithMedicalRecords(address);
     }
+    @PostMapping(value = "person")
+    public void addAPerson(@RequestBody Person person) {
+        personService.addPerson(person);
+    }
 
 
+    @DeleteMapping(value="person")
+    public void deletePerson(@RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName) {
+        personService.deletePerson(firstName, lastName);
+    }
 
 }
