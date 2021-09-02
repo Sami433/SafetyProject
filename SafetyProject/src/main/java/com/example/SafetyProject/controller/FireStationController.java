@@ -1,6 +1,6 @@
 package com.example.SafetyProject.controller;
 
-import com.example.SafetyProject.service.FireStationService;
+import com.example.SafetyProject.service.FireStationService;;
 import com.example.SafetyProject.service.dto.FireStationDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

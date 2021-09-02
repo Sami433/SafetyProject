@@ -66,7 +66,6 @@ public class FireStationService extends CalculatorAge {
 
     }
 
-
     private FireStation FireStationContainPersons(List<FireStation> fireStations, Person person) {
 
         for (FireStation fireStation : fireStations) {
@@ -76,7 +75,6 @@ public class FireStationService extends CalculatorAge {
         }
         return null;
     }
-
 
 
     public FireStationDto findAllPersonsByStationNumber(int number) {
@@ -99,6 +97,7 @@ public class FireStationService extends CalculatorAge {
                 fireStationPersonDto.setLastName(person.getLastName());
                 fireStationPersonDto.setAddress(person.getAddress());
                 fireStationPersonDto.setPhone(person.getPhone());
+
 
                 Integer childsCount = 0;
                 Integer adultsCount = 0;
@@ -126,7 +125,7 @@ public class FireStationService extends CalculatorAge {
 
 
 
-
-
-
 }
+
+
+

@@ -29,17 +29,26 @@ public class PersonController {
 
     }
 
+
     @RequestMapping(value = "personInfo", method = RequestMethod.GET)
     public List<PersonInfoDto> listPersonInfos(@RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName) {
 
         return this.personService.listPersonInfos(firstName, lastName);
 
     }
+
     @RequestMapping(value = "flood/stations", method = RequestMethod.GET)
-    public List<FloodDto> flood (@RequestParam(name = "stations") List<Integer> stationsNumbers) {
+    public List<FloodDto> flood(@RequestParam(name = "stations") List<Integer> stationsNumbers) {
 
         return this.personService.flood(stationsNumbers);
 
     }
+
+    @RequestMapping(value = "fire", method = RequestMethod.GET)
+    public List<FireDto> findAllPersonsWithMedicalRecords(@RequestParam(name = "address") String address) {
+        return this.personService.findAllPersonsWithMedicalRecords(address);
+    }
+
+
 
 }

@@ -23,9 +23,9 @@ public class PersonRepository {
         return this.dataHandler.getData().getPersons();
     }
 
-    public List<Person> findAllpersonByAddress(String address) {
+    public List<Person> findAllpersonByAddress(String aress) {
 
-        return dataHandler.getData().getPersons().stream().filter(p -> p.getAddress().equals(address)).collect(Collectors.toList());
+        return dataHandler.getData().getPersons().stream().filter(p -> p.getAddress().equals(aress)).collect(Collectors.toList());
     }
 
     public List<Person> findAllpersonByName(String firstName, String lastName) {

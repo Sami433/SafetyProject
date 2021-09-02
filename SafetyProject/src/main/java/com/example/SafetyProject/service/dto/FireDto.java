@@ -22,6 +22,10 @@ public class FireDto {
         this.age = age;
     }
 
+    public FireDto() {
+
+    }
+
     public String getFireStation() {
         return fireStation;
     }

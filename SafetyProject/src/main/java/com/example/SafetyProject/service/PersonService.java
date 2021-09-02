@@ -82,6 +82,7 @@ public class PersonService extends CalculatorAge {
         return result;
     }
 
+
     private MedicalRecord medicalRecordsContainsPerson(List<MedicalRecord> medicalRecords, Person person) {
         for (MedicalRecord medicalRecord : medicalRecords) {
 
@@ -127,6 +128,31 @@ public class PersonService extends CalculatorAge {
         return result;
     }
 
-}
+    public List<FireDto> findAllPersonsWithMedicalRecords(String adress) {
+        List<FireDto> result = new ArrayList<>();
+        List<Person> persons = personRepository.findAllpersonByAddress(adress);
+        List<MedicalRecord> medicalRecords = medicalRecordsRepository.findAllMedicalRecords();
 
+        for (Person person : persons) {
+            MedicalRecord medicalRecord = medicalRecordsContainsPerson(medicalRecords, person);
+            FireStation fireStation = fireStationRepository.findFireStationNumberByAddress(adress);
+
+            if (medicalRecord != null) {
+                FireDto dto = new FireDto();
+                dto.setLastName(person.getLastName());
+                dto.setFirstName(person.getFirstName());
+                dto.setAddress(person.getAddress());
+                dto.setPhone(person.getPhone());
+                dto.setMedications(medicalRecord.getMedications());
+                dto.setAllergies(medicalRecord.getAllergies());
+                dto.setFireStation(fireStation.getStation());
+                dto.setAge(String.valueOf(calculatorAge(medicalRecord.getBirthdate())));
+                result.add(dto);
+            }
+        }
+
+            return result;
+
+        }
+    }
 
