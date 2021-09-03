@@ -128,5 +128,11 @@ public class FireStationService extends CalculatorAge {
         fireStationRepository.saveFireStation(fireStation);
     }
 
+
+
+    public void deleteFireStation(String adress, String station) {
+        fireStationRepository.deleteFireStation(adress, station);
+    }
+
 }
 

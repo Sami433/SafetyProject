@@ -33,4 +33,12 @@ public class FireStationController {
         fireStationService.addFireStation(firestation);
     }
 
+
+    @DeleteMapping(value="firestation")
+    public void deleteFireStation(@RequestParam(name = "adress") String adress, @RequestParam(name = "station") String station) {
+        fireStationService.deleteFireStation(adress, station);
+    }
+
+
+
 }

@@ -37,4 +37,17 @@ public class FireStationRepository {
         dataHandler.getData().getFirestations().add(fireStation);
         dataHandler.save();
     }
+
+
+    public void deleteFireStation(String adress, String station) {
+        List<FireStation> firestations = dataHandler.getData().getFirestations();
+        List<FireStation> toRemove = dataHandler.getData().getFirestations().stream()
+                .filter(fireStation -> fireStation.getAddress().equals(adress))
+                .filter(fireStation-> fireStation.getStation().equals(station))
+                .collect(Collectors.toList());
+        firestations.removeAll(toRemove);
+        dataHandler.getData().setFirestations(firestations);
+        dataHandler.save();
+    }
+
 }
