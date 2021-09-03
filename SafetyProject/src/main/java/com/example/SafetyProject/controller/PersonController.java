@@ -3,6 +3,7 @@ package com.example.SafetyProject.controller;
 import com.example.SafetyProject.model.Person;
 import com.example.SafetyProject.service.PersonService;
 import com.example.SafetyProject.service.dto.*;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class PersonController {
         return this.personService.findAllPersonsWithMedicalRecords(address);
     }
     @PostMapping(value = "person")
-    public void addAPerson(@RequestBody Person person) {
+    public void addPerson(@RequestBody Person person) {
         personService.addPerson(person);
     }
 
@@ -58,6 +59,12 @@ public class PersonController {
     @DeleteMapping(value="person")
     public void deletePerson(@RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName) {
         personService.deletePerson(firstName, lastName);
+    }
+
+    @PutMapping(value="person")
+    public Person updatePerson(@NonNull @RequestBody Person person) {
+        personService.updatePerson(person);
+        return person;
     }
 
 }

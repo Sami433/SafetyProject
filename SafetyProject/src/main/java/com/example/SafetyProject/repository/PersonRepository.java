@@ -50,5 +50,20 @@ public class PersonRepository {
         dataHandler.getData().setPersons(persons);
         dataHandler.save();
     }
+    public void updatePerson(Person person) {
 
-}
+        List<Person> persons = dataHandler.getData().getPersons();
+        for (Person person1 : persons) {
+
+            if (person1.getFirstName().equals(person.getFirstName())
+                    && person1.getLastName().equals(person.getLastName())) {
+
+                person1.setAddress(person.getAddress());
+                person1.setCity(person.getCity());
+                person1.setZip(person.getZip());
+                person1.setPhone(person.getPhone());
+                person1.setEmail(person.getEmail());
+
+            }
+        }
+    }}

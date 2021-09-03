@@ -123,7 +123,10 @@ public class FireStationService extends CalculatorAge {
         return result;
     }
 
+    public void addFireStation(FireStation fireStation) {
 
+        fireStationRepository.saveFireStation(fireStation);
+    }
 
 }
 

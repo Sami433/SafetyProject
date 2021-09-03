@@ -163,5 +163,8 @@ public class PersonService extends CalculatorAge {
     public void deletePerson(String firstName, String lastName) {
         personRepository.deletePerson(firstName, lastName);
     }
+    public void updatePerson(Person person) {
+        personRepository.updatePerson(person);
+    }
     }
 
