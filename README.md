@@ -1,12 +1,13 @@
-# OpCl-JAVA-P5
-A local web API, reading a specific json files to process informations using Endpoints. This API respects SOLID princips and REST architecture.
+# SafetyAlerts
 
-##  Run API
+SafetyAlerts est une API retournant des informations spécifiques en fonction d'Endpoints.
 
-Default Controller URL `http://localhost:8080/`.   
+##  Lancer l'API
+
+URL par défaut `http://localhost:8080/`.   
 
 
-## Json input file
+## Fichier JSON
 > example  
 
 datafile.json :
