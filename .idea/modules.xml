@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SafetyProject/SafetyProject.iml" filepath="$PROJECT_DIR$/SafetyProject/SafetyProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SafetyProject/SafetynetAlerts.iml" filepath="$PROJECT_DIR$/SafetyProject/SafetynetAlerts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SafetyProject-master.iml" filepath="$PROJECT_DIR$/.idea/SafetyProject-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SafetyProject-master/SafetyProject/SafetynetAlerts.iml" filepath="$PROJECT_DIR$/SafetyProject-master/SafetyProject/SafetynetAlerts.iml" />
     </modules>
   </component>
 </project>
