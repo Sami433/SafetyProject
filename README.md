@@ -10,7 +10,7 @@ URL par défaut `http://localhost:8080/`.
 ## Fichier JSON
 > example  
 
-datafile.json :
+data.json :
 
 ``` 
   {
